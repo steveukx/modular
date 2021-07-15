@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WHEN working with a package with static directories THEN outputs the correct source map 1`] = `
+Object {
+  "file": "test-packages-static-files.es.js",
+  "mappings": "AAAe,SAASA,GAAT,CAAaC,CAAb,EAAwBC,CAAxB,EAA2C;AACxD,SAAOD,CAAC,GAAGC,CAAX;AACD;;;;",
+  "names": Array [
+    "add",
+    "a",
+    "b",
+  ],
+  "sources": Array [
+    "../src/index.ts",
+  ],
+  "sourcesContent": Array [
+    "export default function add(a: number, b: number): number {
+  return a + b;
+}
+",
+  ],
+  "version": 3,
+}
+`;
+
+exports[`WHEN working with a package with static directories THEN outputs the correct static file 1`] = `
+Object {
+  "data": Array [
+    109,
+    97,
+    105,
+    110,
+    32,
+    123,
+    10,
+    32,
+    32,
+    109,
+    97,
+    114,
+    103,
+    105,
+    110,
+    58,
+    32,
+    53,
+    59,
+    10,
+    125,
+    10,
+  ],
+  "type": "Buffer",
+}
+`;
