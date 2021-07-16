@@ -10,7 +10,7 @@ Object {
     "b",
   ],
   "sources": Array [
-    "../src/index.ts",
+    "packages/__test_packages__/static-files/src/index.ts",
   ],
   "sourcesContent": Array [
     "export default function add(a: number, b: number): number {

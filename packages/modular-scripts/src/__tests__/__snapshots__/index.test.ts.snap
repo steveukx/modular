@@ -47,7 +47,7 @@ Object {
     "React",
   ],
   "sources": Array [
-    "../src/index.tsx",
+    "packages/sample-view/src/index.tsx",
   ],
   "sourcesContent": Array [
     "import * as React from 'react';

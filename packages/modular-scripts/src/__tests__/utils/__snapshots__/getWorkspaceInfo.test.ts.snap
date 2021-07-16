@@ -37,6 +37,13 @@ Object {
     "type": "package",
     "workspaceDependencies": Array [],
   },
+  "test-packages-static-files": Object {
+    "location": "packages/__test_packages__/static-files",
+    "mismatchedWorkspaceDependencies": Array [],
+    "public": true,
+    "type": "package",
+    "workspaceDependencies": Array [],
+  },
   "tree-view-for-tests": Object {
     "location": "packages/tree-view-for-tests",
     "mismatchedWorkspaceDependencies": Array [],

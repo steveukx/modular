@@ -143,6 +143,15 @@ export async function makeBundle(
   const outputOptions: rollup.OutputOptions = {
     freeze: false,
     sourcemap: true, // TODO: read this off env
+    sourcemapPathTransform: (relativeSourcePath, sourcemapPath) => {
+      // will replace relative paths for the input/output
+      // with relative paths to the modular repo root.
+      const absoluteSourcePath = path.resolve(
+        path.dirname(sourcemapPath),
+        relativeSourcePath,
+      );
+      return path.relative(modularRoot, absoluteSourcePath);
+    },
   };
 
   // we're going to use bundle.write() to actually generate the

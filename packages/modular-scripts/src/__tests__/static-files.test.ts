@@ -35,10 +35,10 @@ describe('WHEN working with a package with static directories', () => {
       ├─ README.md #1jv3l2q
       ├─ dist-cjs
       │  ├─ test-packages-static-files.cjs.js #1y2lja9
-      │  └─ test-packages-static-files.cjs.js.map #12i888w
+      │  └─ test-packages-static-files.cjs.js.map #1nrziy
       ├─ dist-es
       │  ├─ test-packages-static-files.es.js #3hpj68
-      │  └─ test-packages-static-files.es.js.map #tglbt9
+      │  └─ test-packages-static-files.es.js.map #dajrfy
       ├─ dist-types
       │  └─ src
       │     └─ index.d.ts #f68aj
