@@ -314,28 +314,34 @@ export async function makeBundle(
       },
     };
   } else {
+    const mainFilePath = preserveModules
+      ? path.join(
+          `${outputDirectory}-cjs`,
+          main.replace(/\.tsx?$/, '.js').replace(path.dirname(main) + '/', ''),
+        )
+      : `${outputDirectory}-cjs/${toParamCase(packageJson.name) + '.cjs.js'}`;
+
+    const moduleFilepath = preserveModules
+      ? path.join(
+          `${outputDirectory}-es`,
+          main.replace(/\.tsx?$/, '.js').replace(path.dirname(main) + '/', ''),
+        )
+      : `${outputDirectory}-es/${toParamCase(packageJson.name) + '.es.js'}`;
     outputFilesPackageJson = {
       // TODO: what of 'bin' fields?
-      main: preserveModules
-        ? path.join(
-            `${outputDirectory}-cjs`,
-            main
-              .replace(/\.tsx?$/, '.js')
-              .replace(path.dirname(main) + '/', ''),
-          )
-        : `${outputDirectory}-cjs/${toParamCase(packageJson.name) + '.cjs.js'}`,
-      module: preserveModules
-        ? path.join(
-            `${outputDirectory}-es`,
-            main
-              .replace(/\.tsx?$/, '.js')
-              .replace(path.dirname(main) + '/', ''),
-          )
-        : `${outputDirectory}-es/${toParamCase(packageJson.name) + '.es.js'}`,
+      main: mainFilePath,
+      module: moduleFilepath,
       typings: path.join(
         `${outputDirectory}-types`,
         main.replace(/\.tsx?$/, '.d.ts'),
       ),
+      exports: {
+        './': {
+          import: moduleFilepath,
+          require: mainFilePath,
+        },
+        './package.json': './package.json',
+      },
     };
   }
 

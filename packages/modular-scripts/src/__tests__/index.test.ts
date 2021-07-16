@@ -197,6 +197,13 @@ describe('modular-scripts', () => {
           "dependencies": Object {
             "react": "^17.0.2",
           },
+          "exports": Object {
+            "./": Object {
+              "import": "dist-es/sample-view.es.js",
+              "require": "dist-cjs/sample-view.cjs.js",
+            },
+            "./package.json": "./package.json",
+          },
           "files": Array [
             "/dist-cjs",
             "/dist-es",
@@ -312,6 +319,13 @@ describe('modular-scripts', () => {
       ).toMatchInlineSnapshot(`
         Object {
           "dependencies": Object {},
+          "exports": Object {
+            "./": Object {
+              "import": "dist-es/index.js",
+              "require": "dist-cjs/index.js",
+            },
+            "./package.json": "./package.json",
+          },
           "files": Array [
             "/dist-cjs",
             "/dist-es",
@@ -368,6 +382,13 @@ describe('modular-scripts', () => {
       ).toMatchInlineSnapshot(`
         Object {
           "dependencies": Object {},
+          "exports": Object {
+            "./": Object {
+              "import": "dist-es/nested-sample-package.es.js",
+              "require": "dist-cjs/nested-sample-package.cjs.js",
+            },
+            "./package.json": "./package.json",
+          },
           "files": Array [
             "/dist-cjs",
             "/dist-es",
@@ -396,6 +417,7 @@ describe('modular-scripts', () => {
         │  ├─ nested-sample-package.es.js #40jnpo
         │  └─ nested-sample-package.es.js.map #11g8lh9
         ├─ dist-types
+        │  ├─ index.d.ts #f68aj
         │  └─ src
         │     └─ index.d.ts #f68aj
         └─ package.json"
