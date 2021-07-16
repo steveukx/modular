@@ -9,7 +9,11 @@ import getPackageMetadata from './getPackageMetadata';
 const outputDirectory = 'dist';
 const typescriptConfigFilename = 'tsconfig.json';
 
-export async function makeTypings(packagePath: string): Promise<void> {
+export async function makeTypings(
+  target: string,
+  publicPackageName: string,
+  packagePath: string,
+): Promise<void> {
   const logger = getLogger(packagePath);
   const { typescriptConfig } = await getPackageMetadata();
 
@@ -29,7 +33,7 @@ export async function makeTypings(packagePath: string): Promise<void> {
   tsconfig.include = [`${packagePath}/src`];
   tsconfig.compilerOptions = {
     ...tsconfig.compilerOptions,
-    declarationDir: `${packagePath}/${outputDirectory}-types`,
+    declarationDir: `dist/${publicPackageName}/${outputDirectory}-types`,
     rootDir: packagePath,
   };
 

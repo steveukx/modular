@@ -24,10 +24,6 @@ describe('WHEN working with a package with static directories', () => {
     });
   });
 
-  afterAll(() => {
-    rimraf.sync(path.join(modularRoot, 'dist', 'test-packages-static-files'));
-  });
-
   it('THEN can build a package with static files', () => {
     expect(tree(path.join(modularRoot, 'dist', 'test-packages-static-files')))
       .toMatchInlineSnapshot(`

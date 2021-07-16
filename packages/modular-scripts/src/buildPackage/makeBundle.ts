@@ -18,7 +18,6 @@ import { getPackageEntryPoints } from './getPackageEntryPoints';
 import getPackageMetadata from './getPackageMetadata';
 import getModularRoot from '../utils/getModularRoot';
 
-const outputDirectory = 'dist';
 const extensions = ['.ts', '.tsx', '.js', '.jsx'];
 
 function distinct<T>(arr: T[]): T[] {
@@ -26,9 +25,11 @@ function distinct<T>(arr: T[]): T[] {
 }
 
 export async function makeBundle(
+  target: string,
+  publicPackageName: string,
   packagePath: string,
   preserveModules: boolean,
-): Promise<boolean> {
+): Promise<void> {
   const modularRoot = getModularRoot();
   const metadata = await getPackageMetadata();
   const {
@@ -275,13 +276,14 @@ export async function makeBundle(
     ...(preserveModules
       ? {
           preserveModules: true,
-          dir: path.join(modularRoot, packagePath, `${outputDirectory}-cjs`),
+          dir: path.join(modularRoot, 'dist', publicPackageName, `dist-cjs`),
         }
       : {
           file: path.join(
             modularRoot,
-            packagePath,
-            `${outputDirectory}-cjs`,
+            'dist',
+            publicPackageName,
+            `dist-cjs`,
             toParamCase(packageJson.name) + '.cjs.js',
           ),
         }),
@@ -295,13 +297,14 @@ export async function makeBundle(
       ...(preserveModules
         ? {
             preserveModules: true,
-            dir: path.join(modularRoot, packagePath, `${outputDirectory}-es`),
+            dir: path.join(modularRoot, 'dist', publicPackageName, `dist-es`),
           }
         : {
             file: path.join(
               modularRoot,
-              packagePath,
-              `${outputDirectory}-es`,
+              'dist',
+              publicPackageName,
+              `dist-es`,
               toParamCase(packageJson.name) + '.es.js',
             ),
           }),
@@ -327,24 +330,21 @@ export async function makeBundle(
       // TODO: what of 'bin' fields?
       main: preserveModules
         ? path.join(
-            `${outputDirectory}-cjs`,
+            `dist-cjs`,
             main
               .replace(/\.tsx?$/, '.js')
               .replace(path.dirname(main) + '/', ''),
           )
-        : `${outputDirectory}-cjs/${toParamCase(packageJson.name) + '.cjs.js'}`,
+        : `dist-cjs/${toParamCase(packageJson.name) + '.cjs.js'}`,
       module: preserveModules
         ? path.join(
-            `${outputDirectory}-es`,
+            `dist-es`,
             main
               .replace(/\.tsx?$/, '.js')
               .replace(path.dirname(main) + '/', ''),
           )
-        : `${outputDirectory}-es/${toParamCase(packageJson.name) + '.es.js'}`,
-      typings: path.join(
-        `${outputDirectory}-types`,
-        main.replace(/\.tsx?$/, '.d.ts'),
-      ),
+        : `dist-es/${toParamCase(packageJson.name) + '.es.js'}`,
+      typings: path.join(`dist-types`, main.replace(/\.tsx?$/, '.d.ts')),
     };
   }
 
@@ -366,5 +366,4 @@ export async function makeBundle(
   };
 
   logger.log(`built ${packageJson.name} at ${packagePath}`);
-  return true;
 }

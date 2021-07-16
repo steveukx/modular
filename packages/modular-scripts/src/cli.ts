@@ -221,6 +221,10 @@ void startupCheck()
     return program.parseAsync(process.argv);
   })
   .catch((err: Error) => {
-    logger.error(err.message);
+    if (err.stack) {
+      logger.error(err.stack);
+    } else {
+      logger.error(err.message);
+    }
     process.exit(1);
   });
