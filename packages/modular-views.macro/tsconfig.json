@@ -1,11 +1,11 @@
 {
-  "extends": "modular-scripts/tsconfig.json",
-  "compilerOptions": {
-    "rootDir": "./src",
-    "noEmit": false,
-    "declaration": true,
-    "declarationDir": "types"
+  "extends": "../../tsconfig.json",
+  "compiledOptions": {
+    "baseUrl": ".",
+    "outDir": "dist-cjs",
+    "declarationDir": "dist-types",
+    "rootDir": "src"
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/__tests__"]
+  "include": ["src/*"],
+  "exclude": ["__tests__", "node_modules"]
 }

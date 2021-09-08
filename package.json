@@ -58,6 +58,7 @@
     "is-ci": "2.0.0",
     "lint-staged": "11.1.2",
     "micromatch": "4.0.4",
+    "patch-package": "^6.4.7",
     "pptr-testing-library": "0.6.5",
     "prettier": "2.3.2",
     "puppeteer": "10.2.0",

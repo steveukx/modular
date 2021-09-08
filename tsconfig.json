@@ -1,5 +1,12 @@
 {
   "extends": "modular-scripts/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": false
+  },
   "include": [
     "modular",
     "packages/**/src",

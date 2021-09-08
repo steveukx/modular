@@ -16,6 +16,9 @@ packages/scoped
 
 
 # Build output
+/packages/*/src/**/*.js
+/packages/*/src/**/*.js.map
+/packages/*/src/**/*.d.ts
 /packages/*/build/
 /packages/*/dist-cjs/
 /packages/*/dist-types/
