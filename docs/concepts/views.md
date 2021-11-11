@@ -85,7 +85,7 @@ exhausted these basic scaling options, should you move on to the next option...
 If keeping each primary component in a sub-folder is causing growing pains in
 the codebase, move it to a workspace. Workspaces are a great option, because
 they provide some benefits of decoupling from the main application, without
-losing the benefits of colocating within the same repository. Of note:
+losing the benefits of collocating within the same repository. Of note:
 
 - Teams will be able to declare and manage their own dependencies instead of it
   all being crammed into a central package.json
@@ -123,7 +123,7 @@ components, you can wrap them with
 them as regular components, but they won't be included in the main bundle, and
 will load dynamically on demand. This is dope.
 
-Now, with the dashboard usecase, there's usually never explicit code that
+Now, with the dashboard use case, there's usually never explicit code that
 renders a specific view; 'layouts' are loaded from a database/service. To make
 this system work well with `modular`, `modular` has a special module
 [`modular-views.macro`](../packages/modular-views.macro/README.md); this module
@@ -138,7 +138,7 @@ it's never necessary to manually update this map since it's defined based on the
 state of the filesystem. This then becomes our primary system of 'dynamically'
 loading and rendering views onto a rendering surface; we leverage and build on
 regular javascript/React semantics instead of inventing something bespoke. This
-is the power of colocating code in the same repository and scaling
+is the power of collocating code in the same repository and scaling
 infrastructure and tooling around it.
 
 NB: It could be that someone has done a
@@ -213,7 +213,7 @@ between your application and the component's expectations.
 The idea here is to write a component that takes props that define how to load
 and interface with a fully decoupled component. For example, you may have a
 registry of components that are defined by a urls that are to be used as an
-iframe src, and have a postmessage based api to communicate across the iframe
+iframe src, and have a `postmessage` based api to communicate across the iframe
 boundary. The wrapper component would then look something like this -
 
 ```jsx
@@ -236,8 +236,8 @@ function IframeWrap({ src }) {
 }
 ```
 
-And somewhere at the top of your hierachy, expose the `iframeChannel` context on
-a provider. It might look something like this:
+And somewhere at the top of your hierarchy, expose the `iframeChannel` context
+on a provider. It might look something like this:
 
 ```jsx
 const IframeWrapContext = React.createContext(null);
@@ -296,7 +296,7 @@ present the sequence of steps to take to gradually transition to strategy 1:
   vanilla assumptions that `modular` expects.
 
 - Once that is done, and assuming that this team would like to participate in
-  all the benefits of a colocated repository system, the entire view's source
+  all the benefits of a collocated repository system, the entire view's source
   code can be moved into a new workspace `X` in the host's repository, and the
   view can stop publishing to the registry.
 

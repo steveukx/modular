@@ -39,6 +39,6 @@ great for open source software because tools can appeal to a broad range of
 developers, but for businesses this means that teams often need dedicated people
 to manage this configuration and apply decisions to teams.
 
-This is the reasont that modular doesn't expose any internal configuration to
+This is the reason that modular doesn't expose any internal configuration to
 end-users, apart from repository agnostic choices, or options required for
 _integration_.
